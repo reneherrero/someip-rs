@@ -71,6 +71,32 @@ impl MessageType {
                 | Self::TpError
         )
     }
+
+    /// Convert base type to TP type (e.g., Request -> TpRequest).
+    ///
+    /// Returns `None` if already a TP type.
+    pub fn to_tp(&self) -> Option<Self> {
+        match self {
+            Self::Request => Some(Self::TpRequest),
+            Self::RequestNoReturn => Some(Self::TpRequestNoReturn),
+            Self::Notification => Some(Self::TpNotification),
+            Self::Response => Some(Self::TpResponse),
+            Self::Error => Some(Self::TpError),
+            _ => None, // Already TP or unknown
+        }
+    }
+
+    /// Convert TP type back to base type.
+    pub fn to_base(&self) -> Self {
+        match self {
+            Self::TpRequest => Self::Request,
+            Self::TpRequestNoReturn => Self::RequestNoReturn,
+            Self::TpNotification => Self::Notification,
+            Self::TpResponse => Self::Response,
+            Self::TpError => Self::Error,
+            other => *other,
+        }
+    }
 }
 
 /// SOME/IP return codes as defined in the specification.

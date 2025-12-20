@@ -51,15 +51,24 @@
 //! ```
 
 pub mod codec;
+pub mod connection;
 pub mod error;
 pub mod header;
 pub mod message;
 pub mod sd;
+pub mod tp;
 pub mod transport;
 pub mod types;
+
+// Async modules (require tokio feature)
+#[cfg(feature = "tokio")]
+pub mod codec_async;
+#[cfg(feature = "tokio")]
+pub mod transport_async;
 
 // Re-export commonly used types at the crate root
 pub use error::{Result, SomeIpError};
 pub use header::{ClientId, MethodId, ServiceId, SessionId, SomeIpHeader, HEADER_SIZE};
 pub use message::{MessageBuilder, SomeIpMessage};
+pub use tp::{TpReassembler, TpSegment, TpUdpClient, TpUdpServer};
 pub use types::{MessageType, ReturnCode, PROTOCOL_VERSION};
