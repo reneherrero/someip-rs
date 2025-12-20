@@ -68,6 +68,11 @@ impl SomeIpError {
         Self::InvalidHeader(msg.into())
     }
 
+    /// Create a new I/O error.
+    pub fn io(err: io::Error) -> Self {
+        Self::Io(err)
+    }
+
     /// Check if this error is recoverable (transient).
     pub fn is_recoverable(&self) -> bool {
         matches!(

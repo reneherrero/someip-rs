@@ -11,6 +11,7 @@
 //! - Type-safe service, method, client, and session IDs
 //! - Request/response pattern support
 //! - Fire-and-forget (notification) messages
+//! - SOME/IP-SD (Service Discovery) for dynamic service discovery
 //!
 //! # Example
 //!
@@ -53,6 +54,7 @@ pub mod codec;
 pub mod error;
 pub mod header;
 pub mod message;
+pub mod sd;
 pub mod transport;
 pub mod types;
 

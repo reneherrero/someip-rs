@@ -40,3 +40,11 @@ path = "examples/udp_server.rs"
 [[example]]
 name = "udp_client"
 path = "examples/udp_client.rs"
+
+[[example]]
+name = "sd_server"
+path = "examples/sd_server.rs"
+
+[[example]]
+name = "sd_client"
+path = "examples/sd_client.rs"
