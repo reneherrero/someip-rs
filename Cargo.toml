@@ -1,0 +1,42 @@
+[package]
+name = "someip-rs"
+version = "0.1.0-alpha.1"
+edition = "2024"
+license = "MIT OR Apache-2.0"
+authors = ["someip-rs contributors"]
+repository = "https://github.com/reneherrero/someip-rs"
+homepage = "https://github.com/reneherrero/someip-rs"
+rust-version = "1.85.0"
+readme = "README.md"
+description = "SOME/IP protocol implementation built on std::net"
+documentation = "https://docs.rs/someip-rs"
+keywords = ["someip", "automotive", "networking", "protocol"]
+categories = ["network-programming", "encoding"]
+exclude = [".github/", "tests/"]
+
+[dependencies]
+bytes = "1"
+thiserror = "2"
+
+[package.metadata.docs.rs]
+all-features = true
+
+[[example]]
+name = "message_basics"
+path = "examples/message_basics.rs"
+
+[[example]]
+name = "tcp_server"
+path = "examples/tcp_server.rs"
+
+[[example]]
+name = "tcp_client"
+path = "examples/tcp_client.rs"
+
+[[example]]
+name = "udp_server"
+path = "examples/udp_server.rs"
+
+[[example]]
+name = "udp_client"
+path = "examples/udp_client.rs"
