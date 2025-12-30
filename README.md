@@ -9,11 +9,12 @@ A Rust library for the SOME/IP (Scalable service-Oriented MiddlewarE over IP) pr
 ## Features
 
 - **Pure Rust** - No C dependencies, built on `std::net`
-- **Complete header support** - Full 16-byte SOME/IP header with serialization
+- **Full SOME/IP support** - Complete 16-byte header with serialization
 - **Type-safe IDs** - `ServiceId`, `MethodId`, `ClientId`, `SessionId` newtypes
 - **TCP & UDP** - Both transport protocols with client/server support
-- **Builder pattern** - Fluent API for message construction
-- **Request/Response** - Built-in session management and correlation
+- **SOME/IP-SD** - Service Discovery for dynamic service registration
+- **SOME/IP-TP** - Transport Protocol for large message segmentation
+- **Async support** - Optional Tokio integration via `tokio` feature
 
 ## Quick Start
 
@@ -96,6 +97,12 @@ SOME/IP messages consist of a 16-byte header followed by an optional payload:
 +----------------+----------------+----------------+----------------+
 ```
 
+## Feature Flags
+
+| Feature | Description | Default |
+|---------|-------------|---------|
+| `tokio` | Async transport with Tokio runtime | No |
+
 ## Examples
 
 See [`examples/`](./examples/) for complete working examples:
@@ -105,6 +112,8 @@ See [`examples/`](./examples/) for complete working examples:
 - `tcp_client.rs` - TCP client with request/response
 - `udp_server.rs` - UDP server with responses
 - `udp_client.rs` - UDP client with request/response
+- `sd_server.rs` - Service Discovery server (offer services)
+- `sd_client.rs` - Service Discovery client (find services)
 
 Run examples:
 
@@ -119,11 +128,16 @@ cargo run --example tcp_client
 # UDP (run server first, then client)
 cargo run --example udp_server
 cargo run --example udp_client
+
+# Service Discovery (run server first, then client)
+cargo run --example sd_server
+cargo run --example sd_client
 ```
 
 ## Documentation
 
 - [API Reference](https://docs.rs/someip-rs)
+- [ARCHITECTURE.md](./ARCHITECTURE.md) - Internal design
 
 ## License
 
